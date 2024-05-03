@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  pytelefy:
+    container_name: pytelefy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./config.yml:/etc/pytelefy/config.yml:ro
+      #- ./data:/data # Persist telegram session
+    ports:
+      - 8000:8000
